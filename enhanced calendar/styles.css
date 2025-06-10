@@ -1,0 +1,314 @@
+body {
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Old English Text MT', serif;
+}
+
+.top-bar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.wrench-menu {
+    margin-right: 10px;
+}
+
+.btn {
+    min-width: 120px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Old English Text MT', serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.year-select {
+    min-width: 100px;
+    height: 40px;
+    padding: 8px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content button, .dropdown-content select {
+    width: 100%;
+    text-align: left;
+}
+
+.wrench-menu:hover .dropdown-content {
+    display: block;
+}
+
+/* Light Theme (default) */
+body.light { background-color: #ffffff; color: #000000; }
+.sidebar.light { background-color: #f8f9fa; border-right: 1px solid #e0e0e0; }
+.header.light, .days-header.light, .week-days.light { background-color: #f8f9fa; }
+.day.light, .month-cell.light, .hour-cell.light { background-color: #ffffff; border: 1px solid #e0e0e0; }
+.btn.light { background: #ffffff; border-color: #e0e0e0; color: #000000; }
+.btn.light:hover { background-color: #f8f9fa; }
+
+/* Dark Theme */
+body.dark { background-color: #1a1a1a; color: #ffffff; }
+.sidebar.dark { background-color: #2d2d2d; border-right: 1px solid #444444; }
+.header.dark, .days-header.dark, .week-days.dark { background-color: #2d2d2d; }
+.day.dark, .month-cell.dark, .hour-cell.dark { background-color: #333333; border: 1px solid #444444; }
+.btn.dark { background: #333333; border-color: #444444; color: #ffffff; }
+.btn.dark:hover { background-color: #444444; }
+
+/* Blue Theme */
+body.blue { background-color: #e6f0fa; color: #003087; }
+.sidebar.blue { background-color: #cce5ff; border-right: 1px solid #99c2ff; }
+.header.blue, .days-header.blue, .week-days.blue { background-color: #cce5ff; }
+.day.blue, .month-cell.blue, .hour-cell.blue { background-color: #ffffff; border: 1px solid #99c2ff; }
+.btn.blue { background: #ffffff; border-color: #99c2ff; color: #003087; }
+.btn.blue:hover { background-color: #cce5ff; }
+
+/* Green Theme */
+body.green { background-color: #e6ffe6; color: #006600; }
+.sidebar.green { background-color: #ccffcc; border-right: 1px solid #99ff99; }
+.header.green, .days-header.green, .week-days.green { background-color: #ccffcc; }
+.day.green, .month-cell.green, .hour-cell.green { background-color: #ffffff; border: 1px solid #99ff99; }
+.btn.green { background: #ffffff; border-color: #99ff99; color: #006600; }
+.btn.green:hover { background-color: #ccffcc; }
+
+/* Purple Theme */
+body.purple { background-color: #f2e6ff; color: #4b0082; }
+.sidebar.purple { background-color: #e6ccff; border-right: 1px solid #cc99ff; }
+.header.purple, .days-header.purple, .week-days.purple { background-color: #e6ccff; }
+.day.purple, .month-cell.purple, .hour-cell.purple { background-color: #ffffff; border: 1px solid #cc99ff; }
+.btn.purple { background: #ffffff; border-color: #cc99ff; color: #4b0082; }
+.btn.purple:hover { background-color: #e6ccff; }
+
+/* Pink Theme */
+body.pink { background-color: #ffe6f2; color: #800040; }
+.sidebar.pink { background-color: #ffccdf; border-right: 1px solid #ff99c2; }
+.header.pink, .days-header.pink, .week-days.pink { background-color: #ffccdf; }
+.day.pink, .month-cell.pink, .hour-cell.pink { background-color: #ffffff; border: 1px solid #ff99c2; }
+.btn.pink { background: #ffffff; border-color: #ff99c2; color: #800040; }
+.btn.pink:hover { background-color: #ffccdf; }
+
+/* Trophy Display and Creator */
+#trophyDisplay {
+    margin-top: 60px; /* Space below top-bar (top-bar height ~40px + padding) */
+    margin-left: 10px;
+    display: none; /* Hidden by default, shown when trophy is completed */
+}
+
+#trophyDisplay.active {
+    display: block; /* Show when trophy is completed */
+}
+
+.trophy-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+}
+
+.trophy-container img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+#trophyCreator {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+}
+
+#trophyCreator input {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.page {
+    display: none;
+    height: 100vh;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page.active {
+    display: block;
+}
+
+.container {
+    display: flex;
+    height: calc(100% - 80px); /* Adjust for trophy display */
+    margin-top: 20px; /* Additional spacing to prevent overlap */
+}
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.points-display, .points-details {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.days-header, .week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day, .month-cell {
+    padding: 10px;
+    min-height: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.day:hover, .month-cell:hover {
+    transform: scale(1.05);
+}
+
+.event {
+    background-color: #4285f4;
+    color: white;
+    padding: 5px;
+    margin: 3px 0;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+#dailyView {
+    display: flex;
+    flex-direction: column;
+}
+
+#hoursGrid {
+    display: grid;
+    grid-template-rows: repeat(24, 1fr);
+    gap: 2px;
+    background-color: #e0e0e0;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.hour-cell {
+    padding: 10px;
+    min-height: 60px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#animationArea {
+    border: 1px solid #e0e0e0;
+    height: 400px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+#combinedVideo {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.today {
+    background-color: #e8f0fe;
+}
+
+.completed {
+    background-color: #90ee90;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .btn {
+        min-width: 140px;
+        height: 48px;
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+
+    .year-select {
+        min-width: 120px;
+        height: 48px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    #trophyCreator input {
+        width: 100%;
+    }
+
+    #trophyDisplay {
+        margin-top: 70px; /* Adjust for larger buttons on mobile */
+        margin-left: 10px;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+}

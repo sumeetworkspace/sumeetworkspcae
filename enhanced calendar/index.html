@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Old+English+Text+MT&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="wrench-menu">
+            <button id="wrenchBtn" class="btn">⚙️</button>
+            <div id="wrenchDropdown" class="dropdown-content">
+                <button id="createEvent" class="btn">Create Event/Task</button>
+                <button id="trophyBtn" class="btn">Trophy System</button>
+                <button id="videoBtn" class="btn">Add Video</button>
+                <input type="file" id="videoInput" accept="video/mp4" style="display: none;">
+                <select id="themeSelect" class="btn">
+                    <option value="light">Light Theme</option>
+                    <option value="dark">Dark Theme</option>
+                    <option value="blue">Blue Theme</option>
+                    <option value="green">Green Theme</option>
+                    <option value="purple">Purple Theme</option>
+                    <option value="pink">Pink Theme</option>
+                </select>
+                <button id="saveDataBtn" class="btn">Save Data</button>
+                <button id="loadDataBtn" class="btn">Load Data</button>
+                <input type="file" id="loadDataInput" accept=".json" style="display: none;">
+            </div>
+        </div>
+        <button id="topBackBtn" class="btn top-back-btn">Back</button>
+        <select id="yearSelect" class="year-select"></select>
+    </div>
+
+    <!-- Page 1: Main Calendar -->
+    <div id="page1" class="page active">
+        <div id="trophyDisplay"></div>
+        <div class="container">
+            <div class="sidebar">
+                <div class="points-display">Points: <span id="totalPoints">0</span></div>
+            </div>
+            <div class="main-content">
+                <div class="header">
+                    <div class="view-controls">
+                        <button id="monthView" class="btn">Month</button>
+                        <button id="weekView" class="btn">Week</button>
+                        <button id="dayView" class="btn">Day</button>
+                        <button id="today" class="btn">Today</button>
+                    </div>
+                    <div class="month-nav">
+                        <button id="prev" class="btn"><</button>
+                        <h1 id="currentPeriod"></h1>
+                        <button id="next" class="btn">></button>
+                    </div>
+                </div>
+                <div id="calendarContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Daily View -->
+    <div id="page2" class="page">
+        <div id="dailyView">
+            <div id="hoursGrid"></div>
+            <button id="playAnimation" class="btn">Play Activities</button>
+        </div>
+    </div>
+
+    <!-- Page 3: Trophy System -->
+    <div id="page3" class="page">
+        <h2>Trophy System</h2>
+        <div id="trophyCreator">
+            <h3>Create Your Trophy</h3>
+            <input type="text" id="trophyName" placeholder="Trophy Name">
+            <input type="file" id="trophyImage" accept="image/*">
+            <input type="number" id="pointGoal" placeholder="Point Goal" min="100" step="100">
+            <input type="number" id="taskPoints" placeholder="Points per Task" min="10" step="5">
+            <input type="number" id="eventPoints" placeholder="Points per Event" min="10" step="5">
+            <button id="createTrophyBtn" class="btn">Create Trophy</button>
+            <button id="deleteTrophyBtn" class="btn">Delete Trophy</button>
+        </div>
+        <div id="trophyList"></div>
+        <div class="points-details">
+            <p>Total Points: <span id="trophyPoints">0</span></p>
+            <p>Bonus Points: <span id="bonusPoints">0</span></p>
+        </div>
+    </div>
+
+    <!-- Page 4: Animation View -->
+    <div id="page4" class="page">
+        <h2>Activity Animation</h2>
+        <div id="animationArea">
+            <video id="combinedVideo" controls></video>
+        </div>
+        <button id="replayAnimation" class="btn">⏯ Replay</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
